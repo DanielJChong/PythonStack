@@ -1,0 +1,53 @@
+#1 Query: Create 3 new users
+
+>>> User.objects.create(fname="daniel", lname="chong", email="danchong@hello.com", age="35")
+User: 1 - daniel chong
+>>> User.objects.all()
+<QuerySet [User: 1 - daniel chong]>
+>>> User.objects.create(fname="rachel", lname="chong", email="peachfuzz@hello.com", age="28")
+User: 2 - rachel chong
+>>> User.objects.create(fname="pepper", lname="chong", email="pepps@hello.com", age="8")
+User: 3 - pepper chong
+
+
+#2 Query: Retrieve all the users
+
+>>> User.objects.all()
+<QuerySet [User: 1 - daniel chong, User: 2 - rachel chong, User: 3 - pepper chong]>
+>>>
+
+#3 Query: Retrieve the last user
+
+>>> User.objects.last()
+User: 3 - pepper chong
+>>>
+
+#4 Query: Retrieve the first user
+
+>>> User.objects.first()
+User: 1 - daniel chong
+>>>
+
+#5 Query: Change the user with id=3 so their last name is Pancakes.
+
+>>> User_to_update = User.objects.get(id=3)
+>>> User_to_update.lname = "Pancakes"
+>>> User_to_update.save()
+>>> User.objects.last()
+User: 3 - pepper Pancakes
+>>>
+
+#6 Query: Delete the user with id=2 from the database
+
+>>> User_to_delete = User.objects.get(id=2)
+>>> User_to_delete.delete()
+(1, {'firstapp.User': 1})
+>>> User.objects.all()
+<QuerySet [User: 1 - daniel chong, User: 3 - pepper Pancakes]>
+>>>
+
+#7 Query: Get all the users sorted by their first name
+
+>>> User.objects.all().order_by("fname")
+<QuerySet [User: 1 - daniel chong, User: 3 - pepper Pancakes]>
+>>>

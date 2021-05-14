@@ -1,0 +1,217 @@
+1) Query: Create 3 new dojos
+
+In [4]: Dojo.objects.create(name="python", city="costa mesa", state="california")
+Out[4]: <Dojo: Dojo object (1)>
+
+In [5]: Dojo.objects.first()
+Out[5]: <Dojo: Dojo object (1)>
+
+In [6]: Dojo.objects.first().__dict__
+Out[6]:
+{'_state': <django.db.models.base.ModelState at 0x212238643a0>,
+ 'id': 1,
+ 'name': 'python',
+ 'city': 'costa mesa',
+ 'state': 'california',
+ 'created_at': datetime.datetime(2020, 11, 9, 21, 56, 41, 67333, tzinfo=<UTC>),
+ 'updated_at': datetime.datetime(2020, 11, 9, 21, 56, 41, 67333, tzinfo=<UTC>)}
+
+In [7]: x = Dojo.objects.first()
+
+In [8]: x.city
+Out[8]: 'costa mesa'
+
+In [9]: x.state
+Out[9]: 'california'
+
+In [10]: Dojo.objects.create(name="html", city="burbank", state="califronia")
+Out[10]: <Dojo: Dojo object (2)>
+
+In [11]: Dojo.objects.create(name="css", city="san francisco", state="california")
+Out[11]: <Dojo: Dojo object (3)>
+
+
+
+2) Query: Delete the 3 dojos you just created
+
+In [14]: Dojo.objects.get(id=1)
+Out[14]: <Dojo: Dojo object (1)>
+
+In [15]: Dojo_to_delete = Dojo.objects.get(id=1)
+
+In [16]: Dojo_to_delete.delete()
+Out[16]: (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+In [17]: Dojo.objects.all
+Out[17]: <bound method BaseManager.all of <django.db.models.manager.Manager object at 0x000002122378CF10>>
+
+In [18]: Dojo.objects.all()
+Out[18]: <QuerySet [<Dojo: Dojo object (2)>, <Dojo: Dojo object (3)>]>
+
+In [19]: Dojo_to_delete = Dojo.objects.get(id=2)
+
+In [20]: Dojo_to_delete.delete()
+Out[20]: (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+In [21]: Dojo_to_delete = Dojo.objects.get(id=3)
+
+In [22]: Dojo_to_delete.delete()
+Out[22]: (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+In [23]: Dojo.objects.all()
+Out[23]: <QuerySet []>
+
+
+
+3) Query: Create 3 more dojos
+
+In [24]: Dojo.objects.create(name="html", city="burbank", state="california")
+Out[24]: <Dojo: Dojo object (4)>
+
+In [25]: Dojo.objects.create(name="css", city="san francisco", state="california")
+Out[25]: <Dojo: Dojo object (5)>
+
+In [26]: Dojo.objects.create(name="python", city="las vegas", state="nevada")
+Out[26]: <Dojo: Dojo object (6)>
+
+In [27]: Dojo.objects.all()
+Out[27]: <QuerySet [<Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+
+
+
+4) Query: Create 3 ninjas that belong to the first dojo
+
+In [28]: x = Dojo.objects.get(id=4)
+
+In [29]: Ninja.objects.create(fname="daniel",lname="chong", dojo=x)
+Out[29]: <Ninja: Ninja object (1)>
+
+In [33]: x.ninjas.first().__dict__
+Out[33]:
+{'_state': <django.db.models.base.ModelState at 0x21223816b20>,
+ 'id': 1,
+ 'dojo_id': 4,
+ 'fname': 'daniel',
+ 'lname': 'chong',
+ 'created_at': datetime.datetime(2020, 11, 9, 22, 30, 16, 206237, tzinfo=<UTC>),
+ 'updated_at': datetime.datetime(2020, 11, 9, 22, 30, 16, 206237, tzinfo=<UTC>)}
+
+In [34]: Ninja.objects.create(fname="rachel", lname="chong", dojo=x)
+Out[34]: <Ninja: Ninja object (2)>
+
+In [35]: Ninja.objects.create(fname="pepper", lname="chong", dojo=x)
+Out[35]: <Ninja: Ninja object (3)>
+
+In [36]: x.ninjas.all()
+Out[36]: <QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+
+
+5) Query: Create 3 ninjas that belong to the second dojo
+
+In [38]: y = Dojo.objects.get(id=5)
+
+In [39]: Ninja.objects.create(fname="john", lname="wick", dojo=y)
+Out[39]: <Ninja: Ninja object (4)>
+
+In [40]: Ninja.objects.create(fname="mary", lname="poppins", dojo=y)
+Out[40]: <Ninja: Ninja object (5)>
+
+In [41]: Ninja.objects.create(fname="daisy", lname="chong", dojo=y)
+Out[41]: <Ninja: Ninja object (6)>
+
+In [42]: y.ninjas.all()
+Out[42]: <QuerySet [<Ninja: Ninja object (4)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>]>
+
+
+
+6) Query: Create 3 ninjas that belong to the third dojo
+
+In [43]: z = Dojo.objects.get(id=6)
+
+In [44]: Ninja.objects.create(fname="penelope", lname="chong", dojo=z)
+Out[44]: <Ninja: Ninja object (7)>
+
+In [45]: Ninja.objects.create(fname="maximus", lname="chong", dojo=z)
+Out[45]: <Ninja: Ninja object (8)>
+
+In [46]: Ninja.objects.create(fname="mochi", lname="chong", dojo=z)
+Out[46]: <Ninja: Ninja object (9)>
+
+In [47]: z.ninjas.all()
+Out[47]: <QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+
+
+
+7) Query: Retrieve all the ninjas from the first dojo
+
+In [57]: x.ninjas.all()
+Out[57]: <QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+
+
+8) Query: Retrieve all the ninjas from the last dojo
+
+In [60]: z.ninjas.all()
+Out[60]: <QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+
+
+
+9) Query: Retrieve the last ninja's dojo
+
+In [61]: Ninja.objects.last().__dict__
+Out[61]:
+{'_state': <django.db.models.base.ModelState at 0x2122383bb50>,
+ 'id': 9,
+ 'dojo_id': 6,
+ 'fname': 'mochi',
+ 'lname': 'chong',
+ 'created_at': datetime.datetime(2020, 11, 9, 22, 48, 43, 696404, tzinfo=<UTC>),
+ 'updated_at': datetime.datetime(2020, 11, 9, 22, 48, 43, 696404, tzinfo=<UTC>)}
+
+
+
+10) Add a new text field called "desc" to your Dojo class
+
+# Create your models here.
+class Dojo(models.Model):
+    name = models.CharField(max_length=55)
+    city = models.CharField(max_length=55)
+    state = models.CharField(max_length=55)
+    desc = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # ninjas = all ninjas within this dojo
+
+
+
+11) Create and run the migration files to update the table in your database. If needed, provide a default value of "old dojo"
+
+# Create your models here.
+class Dojo(models.Model):
+    name = models.CharField(max_length=55)
+    city = models.CharField(max_length=55)
+    state = models.CharField(max_length=55)
+    desc = models.TextField(default="old dojo")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # ninjas = all ninjas within this dojo
+
+
+
+12) Query: Create a new dojo
+
+In [3]: Dojo.objects.create(name="art dojo", city="valencia", state="california", desc="creating beautiful stuff")
+Out[3]: <Dojo: Dojo object (7)>
+
+In [4]: Dojo.objects.last().__dict__
+Out[4]:
+{'_state': <django.db.models.base.ModelState at 0x17f34b49bb0>,
+ 'id': 7,
+ 'name': 'art dojo',
+ 'city': 'valencia',
+ 'state': 'california',
+ 'desc': 'creating beautiful stuff',
+ 'created_at': datetime.datetime(2020, 11, 9, 23, 39, 0, 634202, tzinfo=<UTC>),
+ 'updated_at': datetime.datetime(2020, 11, 9, 23, 39, 0, 634202, tzinfo=<UTC>)}
+
