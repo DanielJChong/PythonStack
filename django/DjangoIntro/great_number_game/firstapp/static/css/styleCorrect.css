@@ -1,0 +1,12 @@
+* {
+    /* outline: 1px dotted red; */
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+#wrapper {
+    width: 970px;
+    margin: 0 auto;
+    text-align: center;
+}

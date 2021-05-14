@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+</head>
+<body>
+    <div id="wrapper">
+        <form action="/processing_form_data" method="post">
+            {% csrf_token %}
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name">
+            <label for="location">Dojo Location:</label>
+            <select name="location" id="location">
+                <option value="sanjose">San Jose</option>
+                <option value="oc">Orange County</option>
+                <option value="burbank">Burbank</option>
+                <option value="bayarea">Bay Area</option>
+                <option value="seattle">Seattle</option>
+            </select>
+            <label for="language">Favorite language</label>
+            <input type="text" name="language" id="language">
+            <label for="comment">Comment (Optional)</label>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
