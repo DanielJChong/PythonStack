@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Trip</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Hello {{logged_in_user.fname}}! Let's edit your trip!</h1>
+        <a href="/logout">Logout</a>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        <form action="/process/edit/{{trip.id}}" method="post">
+            {% csrf_token %}
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination" value="{{trip.destination}}">
+            <label for="sdate">Start Date</label>
+            <input type="date" name="sdate" id="sdate" value="{{trip.sdate}}">
+            <label for="edate">End Date</label>
+            <input type="date" name="edate" id="edate" value="{{trip.edate}}">
+            <label for="plan">Plan</label>
+            <input type="text" name="plan" id="plan" value="{{trip.plan}}">
+            <button>Submit</button>
+        </form>
+        <form action="/success">
+            {% csrf_token %}
+            <button>Cancel</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+Things to get ready before Test:
+
+-zoom meeting opened
+-coding dojo open
+	-open models, migrations, orm crud commands, one to many, many to many
+-django env started on command prompt
+	-cd to belt exam project
+-vs code on belt exam
+	-also open dojo & ninja, books & authors, semi-restful tv shows as guide
+-python schedule open
+	-open videos
+	-open full stack build video as guide
+-phone timer out
+-folder open to easily zip file when done
+-empty browser to test
+
+
+Once test begins:
+-check one more time to see if server works.
+-make adjustments to models
+-double check models are good for exam requirements
+-make migrations
+-migrate
+-start creating

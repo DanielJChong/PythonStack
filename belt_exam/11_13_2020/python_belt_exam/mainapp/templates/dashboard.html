@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <a href="/logout">Log Out</a>
+    <form action="/trips/create">
+        {% csrf_token %}
+        <button>Create a New Trip!</button>
+    </form>
+    <h2>Hello {{logged_in_user.fname}}!</h2>
+    <h3>Your trips:</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Destination</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Plan</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trip in trips %}
+                <tr>
+                    <td><a href="/trips/info/{{trip.id}}">{{trip.destination}}</a></td>
+                    <td>{{trip.sdate}}</td>
+                    <td>{{trip.edate}}</td>
+                    <td>{{trip.plan}}</td>
+                    <td><a href="/trips/remove/{{trip.id}}">Remove</a> | <a href="/trips/edit/{{trip.id}}">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
