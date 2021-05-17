@@ -1,0 +1,79 @@
+Run these commands in the order instructed. Your assignment submission should be a .txt file that includes a short explanation of what you were able to learn about each command by doing a brief (1-2 min) web search for each term. If it is relevant, include the output of your command and your understanding of what it means. It is important to always read your terminal output and try to understand it.
+
+Run the following commands:
+
+1. pip list 
+
+- Shows all programs installed into my c-drive.
+
+
+
+2. deactivate (This will deactivate your virtual environment) 
+
+- Deactivates our environment. Sends me back to my computer (C-drive) 
+
+
+
+3. pip3 list (How is the result different from when you ran pip list with the virtualenv activated? Hint, you should not have as many things listed when the virtualenv is deactivated. If your results are the same, go back and figure out what went wrong.) 
+
+- It seems like pip list shows what is installed.  When in the virtualEnv, it only shows what is installed in that environment.  So only a few things in my flaskEnv.
+
+
+
+4. source myEnvironments/py3Env/bin/activate (Adjust the path as needed to re-activate the virtualenv; for windows call myEnvironments/py3Env/Scripts/activate) 
+
+- This activates that specific environment.  I have currently called my flaskEnv.
+
+
+
+5. pip install Django==2.2.4 (What information do you see returned in terminal after this command?) - 
+
+- (djangoEnv) C:\Users\danie\Documents\codingdojo\python_stack\my_environments>pip install Django==2.2.4
+Collecting Django==2.2.4
+  Downloading Django-2.2.4-py3-none-any.whl (7.5 MB)
+     |████████████████████████████████| 7.5 MB 1.3 MB/s
+Collecting sqlparse
+  Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB ...
+Collecting pytz
+  Downloading pytz-2020.1-py2.py3-none-any.whl (510 kB)
+     |████████████████████████████████| 510 kB 6.8 MB/s
+Installing collected packages: sqlparse, pytz, Django
+Successfully installed Django-2.2.4 pytz-2020.1 sqlparse-0.4.1
+WARNING: You are using pip version 20.2.3; however, version 20.2.4 is available.
+You should consider upgrading via the 'c:\users\danie\documents\codingdojo\python_stack\my_environments\djangoenv\scripts\python.exe -m pip install --upgrade pip' command.
+
+(djangoEnv) C:\Users\danie\Documents\codingdojo\python_stack\my_environments>
+
+- Installed Django.
+
+
+
+6. pip freeze (What's the difference between freeze and list?) - 
+
+- Pip freese (Output installed packages in requirements format.)
+- Pip list (List installed packages.)
+
+
+
+7. First cd into your Desktop directory (cd ~/Desktop), then run this command: pip freeze > requirements.txt. What do you see when you ls? What's inside this file? - 
+
+- not sure... didn't do anything...
+
+
+
+8. pip uninstall Django - 
+
+- Uninstalls Django.
+
+
+
+9. pip show Django - 
+
+- Gives us info about Django. Version, Summary, Author, etc.
+
+
+
+10. pip search Flask This one might take a moment to execute. - 
+
+- Searches anything that has the name Flask.
